@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 16</title>
+</head>
+<body>
+  <input id="first-number" type="number" value="0" placeholder="第一个数字">
+  <input id="second-number" type="number" value="0" placeholder="第二个数字">
+  <button id="add-btn">加</button>
+  <button id="minus-btn">减</button>
+  <button id="times-btn">乘</button>
+  <button id="divide-btn">除</button>
+  <p id="result">运算结果</p>
+
+  <script>
+    const calculate = (type) => {
+      const firstValue = Number(document.getElementById('first-number').value);
+      const secondValue = Number(document.getElementById('second-number').value);
+      let result = 0;
+
+      switch (type) {
+        case 'add':
+          result = firstValue + secondValue;
+          break;
+        case 'minus':
+          result = firstValue - secondValue;
+          break;
+        case 'times':
+          result = firstValue * secondValue;
+          break;
+        case 'divide':
+          result = firstValue / secondValue;
+          break;
+        default:
+          break;
+      }
+      document.getElementById('result').innerHTML = result;
+    }
+
+    const buttons = document.getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+      const id = buttons[i].id;
+      const index = id.indexOf('-');
+      const type = id.slice(0, index);
+      buttons[i].addEventListener('click', () => {
+        calculate(type);
+      });
+    }
+  </script>
+</body>
+</html>
