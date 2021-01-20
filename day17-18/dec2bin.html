@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>day17-18</title>
+</head>
+<body>
+  <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+  <button id="trans-btn">转化为二进制</button>
+  <p id="result">运算结果</p>
+
+  <script>
+    // 判断输入必须为一个非负整数
+    // 方法1：
+    // typeof decNumber !== 'number' || decNumber < 0 || decNumber % 1 !== 0
+    // 方法2：
+    // 利用ES6新增的方法 Number.isInteger()
+
+
+    // 通过除2取余的方法来把十进制整数转化为二进制
+    const dec2bin = (decNumber) => {
+      // 需要判断输入必须为一个非负整数
+      if (typeof decNumber !== 'number' || decNumber < 0 || decNumber % 1 !== 0) {
+        console.log('请输入正整数');
+        return;
+      }
+      if (decNumber === 0) {
+        return 0;
+      }
+      let result = '';
+      while (decNumber > 0) {
+        let num = decNumber % 2;
+        decNumber = (decNumber - num) / 2;
+        result = num + result;
+      }
+      return result;
+    }
+    // 点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+    document.getElementById('trans-btn').addEventListener('click', () => {
+      const inputValue = Number(document.getElementById('dec-number').value);
+      const result = dec2bin(inputValue);
+      document.getElementById('result').innerHTML = result;
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script>
+    // 3的小游戏
+    let result = [];
+    for (let i = 1; i <= 100; i++) {
+      if (i % 3 === 0 || String(i).indexOf(3) !== -1) {
+        result.push('PA');
+      } else {
+        result.push(i);
+      }
+    }
+    console.log(result.join(','));
+
+    // 乘法表
+    for (let i = 1; i <= 9; i++) {
+      for (let j = i; j <= 9; j++) {
+        console.log(`${i} * ${j} = ${i * j}`);
+      }
+    }
+
+    // 乘法表，在网页中用table显示
+    const table = document.createElement('table');
+    for (let i = 1; i <= 9; i++) {
+      const tr = document.createElement('tr');
+      table.appendChild(tr);
+      for (let j = i; j <= 9; j++) {
+        const td = document.createElement('td');
+        td.style.textAlign = 'center';
+        td.style.border = '1px solid #000';
+        td.innerHTML = `${i} * ${j} = ${i * j}`;
+        tr.appendChild(td);
+      }
+    }
+    console.log(table);
+    document.getElementById('content').appendChild(table);
+  </script>
+</body>
+</html>
