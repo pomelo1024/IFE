@@ -27,14 +27,17 @@
     }
 
     // 乘法表，在网页中用table显示
+
+    // 创建table元素，通过appendChild插入到div中
     const table = document.createElement('table');
+    // border 规定表格边框的宽度
+    table.border = '1';
     for (let i = 1; i <= 9; i++) {
       const tr = document.createElement('tr');
       table.appendChild(tr);
       for (let j = i; j <= 9; j++) {
         const td = document.createElement('td');
         td.style.textAlign = 'center';
-        td.style.border = '1px solid #000';
         td.innerHTML = `${i} * ${j} = ${i * j}`;
         tr.appendChild(td);
       }
