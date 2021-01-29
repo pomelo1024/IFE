@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChangeStyle</title>
+  <style>
+    select {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <label>
+    <input id="school" name="status" type="radio">
+    School
+  </label>
+  <label>
+    <input id="company" name="status" type="radio">
+    Company
+  </label>
+
+  <select id="school-select">
+    <option>北京邮电大学</option>
+    <option>黑龙江大学</option>
+    <option>华中科技大学</option>
+  </select>
+
+  <select id="company-select">
+    <option>百度</option>
+    <option>爱奇艺</option>
+  </select>
+  <script>
+    // js 动态修改 css 样式的两种方式
+    // ele.style.color = 'red'
+    // ele.style.cssText = 'display: block; color: red;'
+    // 注意：使用 cssText 是直接替换原有 css 值，可以使用+=方式累加原来的 css 值
+
+    const inputs = document.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('change', (e) => {
+        // 通过 e.target.id 区分不同的 input
+        const school = document.getElementById('school-select');
+        const company = document.getElementById('company-select');
+        if (e.target.id === 'school') {
+          school.style.display = 'block';
+          company.style.display = 'none';
+        } else if (e.target.id === 'company') {
+          school.style.display = 'none';
+          company.style.display = 'block';
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

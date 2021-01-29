@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChangeColor</title>
+  <style>
+    .palette {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .palette li {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="palette">
+    <li style="background-color:crimson"></li>
+    <li style="background-color:bisque"></li>
+    <li style="background-color:blueviolet"></li>
+    <li style="background-color:coral"></li>
+    <li style="background-color:chartreuse"></li>
+    <li style="background-color:darkolivegreen"></li>
+    <li style="background-color:cyan"></li>
+    <li style="background-color:#194738"></li>
+  </ul>
+
+  <p class="color-picker"></p>
+
+  <script>
+    // Task: 点击某一个 li 标签时，将 li 的背景色显示在 p 标签内，并将 p 标签中的文字颜色设置成 li 的背景色
+
+    // 不用事件委托，需要在每个 li 上挂载点击事件
+    // e.target 实际的触发事件的元素
+    // e.currentTarget 绑定事件处理程序的元素
+    // 事件绑定在真正的目标元素上时，e.target === e.currentTarget，即为 li
+
+    // const items = document.getElementsByTagName('li');
+    // for (let i = 0; i < items.length; i++) {
+    //   items[i].addEventListener('click', (e) => {
+    //     const p = document.getElementsByClassName('color-picker')[0];
+    //     const color = e.target.style.backgroundColor;
+    //     p.innerHTML = color;
+    //     p.style.color = color;
+    //   })
+    // }
+
+    // 事件委托，只需要在 ul 上挂载事件处理程序
+    // 事件绑定在真正的父元素上时，e.target 为 li，e.currentTarget 为 ul
+
+    const ul = document.getElementsByClassName('palette')[0];
+    ul.addEventListener('click', (e) => {
+      const p = document.getElementsByClassName('color-picker')[0];
+      const li = e.target;
+      const color = li.style.backgroundColor;
+      p.innerHTML = color;
+      p.style.color = color; 
+    })
+  </script>
+</body>
+
+</html>

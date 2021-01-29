@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event</title>
+</head>
+<body>
+  <input id="name" type="text">    
+  <button id="submit-btn">Submit</button>
+  
+  <script>
+    // 当点击按钮 submit-btn 时，在 console 中输出 name 中的内容
+    // 在输入过程中，如果按回车键，则同样执行上一条的需求
+    // 在输入过程中，如果按 ESC 键，则把输入框中的内容清空
+    const input = document.getElementById('name');
+    const button = document.getElementById('submit-btn');
+
+    const printResult = () => {
+      const value = input.value;
+      console.log(value);
+    }
+    button.addEventListener('click', printResult);
+
+    // 键盘事件监听
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        printResult();
+      } else if (e.key === 'Escape') {
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -39,13 +39,13 @@
     // getElementById、getElementsByClassName、getElementsByTagName 拿到的是 HTMLCollection
     // querySelectorAll、querySelector 拿到的是 NodeList
     function getAllListItem() {
-      // 返回页面中所有li标签
+      // 返回页面中所有 li 标签
       const items = document.getElementsByTagName('li');
       console.log(items);
     }
 
     function findAllHtmlSpanInOneSection(sectionId) {
-      // 返回某个section下所有span中内容为HTML的span标签
+      // 返回某个 section 下所有 span 中内容为 HTML 的 span 标签
       const section = document.getElementById(sectionId);
       const spans = section.getElementsByTagName('span');
       const result = [];
@@ -58,7 +58,7 @@
     }
 
     function findListItem(sectionId, spanCont) {
-      // 返回某个section下，所有所包含span内容为spanCont的LI标签
+      // 返回某个 section 下，所有所包含 span 内容为 spanCont 的 LI 标签
       const section = document.getElementById(sectionId);
       const spans = section.getElementsByTagName('span');
       const result = [];
@@ -71,7 +71,7 @@
     }
 
     function getActiveLinkContent(sectionId) {
-      // 返回某个section下，class为active的链接中包含的文字内容
+      // 返回某个 section 下，class 为 active 的链接中包含的文字内容
       const section = document.getElementById(sectionId);
       const result = section.getElementsByClassName('active')[0].innerHTML;
       console.log(result);
